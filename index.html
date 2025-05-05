@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio profesional de Ivan Martinez Gudiño, Ingeniero en Sistemas Computacionales">
+    <title>Ivan Martinez Gudiño | Ingeniero en Sistemas</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Outfit', 'sans-serif'],
+                        'heading': ['Sora', 'sans-serif']
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f7ff',
+                            100: '#e0eefe',
+                            200: '#bae0fd',
+                            300: '#7cc8fb',
+                            400: '#36aaf5',
+                            500: '#0d8de3',
+                            600: '#006fc1',
+                            700: '#00599d',
+                            800: '#064b81',
+                            900: '#0a406b',
+                        },
+                        accent: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                        },
+                        dark: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-dark-800 bg-white dark:bg-dark-950 dark:text-white antialiased overflow-x-hidden">
+    <!-- Cursor -->
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 transition-all duration-300 py-4" id="header">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-bold font-heading relative z-10 group">
+                    <span class="text-primary-600 dark:text-primary-400 transition-colors">Ivan Martinez Gudiño</span>
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="nav-link">Inicio</a>
+                    <a href="#sobre-mi" class="nav-link">Sobre Mí</a>
+                    <a href="#habilidades" class="nav-link">Habilidades</a>
+                    <a href="#educacion" class="nav-link">Educación</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                    
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-800 transition-colors" aria-label="Cambiar tema">
+                        <i class="fas fa-moon dark:hidden text-dark-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="theme-toggle-mobile" class="p-2 mr-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-800 transition-colors" aria-label="Cambiar tema">
+                        <i class="fas fa-moon dark:hidden text-dark-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                    
+                    <button id="mobile-menu-button" class="hamburger" aria-label="Menú móvil">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="fixed inset-0 bg-white dark:bg-dark-950 z-40 flex flex-col justify-center items-center transform translate-x-full transition-transform duration-500 ease-in-out">
+            <nav class="flex flex-col items-center space-y-8 text-2xl">
+                <a href="#inicio" class="mobile-nav-link">Inicio</a>
+                <a href="#sobre-mi" class="mobile-nav-link">Sobre Mí</a>
+                <a href="#habilidades" class="mobile-nav-link">Habilidades</a>
+                <a href="#educacion" class="mobile-nav-link">Educación</a>
+                <a href="#contacto" class="mobile-nav-link">Contacto</a>
+            </nav>
+            
+            <div class="absolute bottom-10 flex space-x-6">
+                <a href="#" class="social-icon-mobile" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="social-icon-mobile" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-icon-mobile" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+            <!-- Background Elements -->
+            <div class="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden">
+                <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-primary-100 dark:bg-primary-900/20 rounded-bl-full opacity-60 dark:opacity-30 blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-accent-100 dark:bg-accent-900/20 rounded-tr-full opacity-60 dark:opacity-30 blur-3xl"></div>
+            </div>
+            
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <div class="lg:w-1/2 text-center lg:text-left" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="inline-block px-4 py-1.5 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 rounded-full text-sm font-medium mb-6">
+                            Ingeniero en Sistemas Computacionales
+                        </div>
+                        
+                        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold font-heading mb-6 leading-tight">
+                            <span class="block text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                                Hola, soy
+                            </span>
+                            <span class="relative inline-block mt-2 text-reveal">
+                                Ivan Martinez
+                            </span>
+                        </h1>
+                        
+                        <p class="text-lg sm:text-xl text-dark-600 dark:text-dark-300 mb-8 max-w-xl mx-auto lg:mx-0">
+                            Desarrollador web y próximo a iniciar mi residencia profesional, con sólidos conocimientos en desarrollo de software y soluciones tecnológicas.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                            <a href="#contacto" class="btn-primary">
+                                <span>Contáctame</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="res/pdf/CV Ivan Martinez Gudiño.pdf" download class="btn-secondary">
+                                <span>Descargar CV</span>
+                                <i class="fas fa-download ml-2"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="flex gap-6 mt-10 justify-center lg:justify-start">
+                            <a href="https://www.linkedin.com/in/ivan-martinez-gudi%C3%B1o-404884343/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/IVAN0137" target="_blank" class="social-icon" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://wa.me/527207444187" target="_blank" class="social-icon" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-1/2 flex justify-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                        <div class="relative">
+                            <!-- Decorative elements -->
+                            <div class="absolute -top-10 -left-10 w-20 h-20 border-2 border-primary-400 dark:border-primary-600 rounded-lg rotate-12 opacity-70"></div>
+                            <div class="absolute -bottom-10 -right-10 w-20 h-20 border-2 border-accent-400 dark:border-accent-600 rounded-full opacity-70"></div>
+                            
+                            <!-- Profile image container -->
+                            <div class="relative z-10 w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden shadow-2xl">
+                                <img src="IMG/CV_IVAN.png" alt="Ivan Martinez Gudiño" class="w-full h-full object-contain">
+                            </div>
+                            
+                            <!-- Floating badge -->
+                            <div class="absolute -bottom-5 -right-5 bg-white dark:bg-dark-800 p-4 rounded-full shadow-lg z-20 animate-float">
+                                <div class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                                    <i class="fas fa-code text-3xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Scroll indicator -->
+                <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+                    <span class="text-sm text-dark-500 dark:text-dark-400 mb-2">Scroll</span>
+                    <div class="w-5 h-10 border-2 border-dark-300 dark:border-dark-600 rounded-full flex justify-center">
+                        <div class="scroll-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="sobre-mi" class="py-20 relative">
+            <!-- Background decoration -->
+            <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-primary-50 dark:bg-primary-900/10 rounded-bl-full -z-10 opacity-70"></div>
+            
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="inline-block px-3 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 rounded-full text-sm font-medium mb-4">
+                        Sobre Mí
+                    </span>
+                    <h2 class="text-4xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                        Conóceme mejor
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div data-aos="fade-right" data-aos-duration="1000">
+                        <div class="relative">
+                            <!-- Decorative elements -->
+                            <div class="absolute -top-6 -left-6 w-24 h-24 border-2 border-primary-400 dark:border-primary-600 rounded-lg opacity-70"></div>
+                            
+                            <!-- Image container -->
+                            <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl transform scale-75 translate-x-12">
+                                <img src="IMG/presivan.webp" alt="Ivan Martinez Gudiño" class="w-full h-full object-cover">
+                            </div>
+                            
+                            <!-- Experience badge -->
+                            
+                        </div>
+                    </div>
+                    
+                    <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                        <h3 class="text-2xl font-bold font-heading mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                            ¿Quién soy?
+                        </h3>
+                        
+                        <p class="text-lg text-dark-700 dark:text-dark-300 mb-6 leading-relaxed">
+                            Soy un <span class="font-semibold">Ingeniero en Sistemas Computacionales</span> apasionado por la tecnología y la resolución de problemas. Estoy próximo a iniciar mi residencia profesional y busco oportunidades para aplicar mis conocimientos y habilidades en un entorno real.
+                        </p>
+                        
+                        <p class="text-lg text-dark-700 dark:text-dark-300 mb-8 leading-relaxed">
+                            Mi formación académica me ha proporcionado una sólida base en programación, diseño de sistemas, bases de datos y redes. Me caracterizo por ser una persona analítica, proactiva y con gran capacidad de adaptación a nuevos entornos y tecnologías.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                            <div class="info-card">
+                                <h4 class="font-bold text-dark-900 dark:text-white">Nombre:</h4>
+                                <p class="text-dark-700 dark:text-dark-300">Ivan Martinez Gudiño</p>
+                            </div>
+                            <div class="info-card">
+                                <h4 class="font-bold text-dark-900 dark:text-white">Email:</h4>
+                                <p class="text-dark-700 dark:text-dark-300 break-words">ivanmtzgudino@gmail.com</p>
+                            </div>
+                            <div class="info-card">
+                                <h4 class="font-bold text-dark-900 dark:text-white">Ubicación:</h4>
+                                <p class="text-dark-700 dark:text-dark-300">La Higuera, Peñamiller, Queretaro.</p>
+                            </div>
+                            <div class="info-card">
+                                <h4 class="font-bold text-dark-900 dark:text-white">Disponibilidad:</h4>
+                                <p class="text-dark-700 dark:text-dark-300">Tiempo Completo</p>
+                            </div>
+                        </div>
+                        
+                        <a href="res/pdf/CV Ivan Martinez Gudiño.pdf" download class="btn-primary">
+                            <span>Descargar CV</span>
+                            <i class="fas fa-download ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Interests -->
+                <div class="mt-24" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="text-center mb-12">
+                        <h3 class="text-2xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                            Mis Intereses
+                        </h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+                        <div class="interest-card" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="interest-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h4 class="font-medium">Desarrollo Web</h4>
+                        </div>
+                        <div class="interest-card" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="interest-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4 class="font-medium">Bases de Datos</h4>
+                        </div>
+                        <div class="interest-card" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="interest-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4 class="font-medium">Desarrollo Móvil</h4>
+                        </div>
+                        <div class="interest-card" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="interest-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <h4 class="font-medium">Redes</h4>
+                        </div>
+                        <div class="interest-card" data-aos="zoom-in" data-aos-delay="500">
+                            <div class="interest-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h4 class="font-medium">IA</h4>
+                        </div>
+                        <div class="interest-card" data-aos="zoom-in" data-aos-delay="600">
+                            <div class="interest-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="font-medium">Ciberseguridad</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="habilidades" class="py-20 bg-gray-50 dark:bg-dark-900/30">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="inline-block px-3 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 rounded-full text-sm font-medium mb-4">
+                        Habilidades
+                    </span>
+                    <h2 class="text-4xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                        Mis Especialidades
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <!-- Technical Skills -->
+                    <div data-aos="fade-right" data-aos-duration="1000">
+                        <h3 class="text-2xl font-bold font-heading mb-8 text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                            Habilidades Técnicas
+                        </h3>
+                        
+                        <div class="space-y-8">
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">HTML/CSS</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">JavaScript</span>
+                                    <span>60%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Java</span>
+                                    <span>55%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 55%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Python</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item">
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">SQL</span>
+                                    <span>60%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tools & Technologies -->
+                    <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                        <h3 class="text-2xl font-bold font-heading mb-8 text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                            Herramientas y Tecnologías
+                        </h3>
+                        
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                            <div class="tech-card">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="tech-card">
+                                <i class="fab fa-git-alt"></i>
+                                <span>Git</span>
+                            </div>
+                            
+                            <div class="tech-card">
+                                <i class="fas fa-database"></i>
+                                <span>MySQL</span>
+                            </div>
+                            
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold font-heading mt-12 mb-8 text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                            Habilidades Blandas
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Trabajo en Equipo</h4>
+                                    <p class="text-dark-500 dark:text-dark-400 text-sm">Colaboración efectiva</p>
+                                </div>
+                            </div>
+                            
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Comunicación</h4>
+                                    <p class="text-dark-500 dark:text-dark-400 text-sm">Clara y efectiva</p>
+                                </div>
+                            </div>
+                            
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Gestión de Proyectos</h4>
+                                    <p class="text-dark-500 dark:text-dark-400 text-sm">Organización y planificación</p>
+                                </div>
+                            </div>
+                            
+                            <div class="soft-skill-card">
+                                <div class="soft-skill-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Resolución de Problemas</h4>
+                                    <p class="text-dark-500 dark:text-dark-400 text-sm">Pensamiento analítico</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="educacion" class="py-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="inline-block px-3 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 rounded-full text-sm font-medium mb-4">
+                        Educación
+                    </span>
+                    <h2 class="text-4xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                        Mi Formación Académica
+                    </h2>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <!-- Timeline -->
+                    <div class="relative education-timeline" data-aos="fade-up" data-aos-duration="1000">
+                        <!-- Visible Education Items -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2020- Presente</span>
+                                <h3 class="text-xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                                    Ingeniería en Sistemas Computacionales
+                                </h3>
+                                <p class="text-lg">INSTITUTO TECNOLÓGICO DE QUERÉTARO</p>
+                                <p class="text-dark-500 dark:text-dark-400">Próximo a iniciar residencia profesional.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">2017 - 2020</span>
+                                <h3 class="text-xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                                    Bachillerato
+                                </h3>
+                                <p class="text-lg">EMSAD 22 PEÑABLANCA</p>
+                                <p class="text-dark-500 dark:text-dark-400"></p>
+                            </div>
+                        </div>
+                        
+                        <!-- Hidden Education Items (will be toggled) -->
+                        <div id="more-education" class="hidden">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <span class="timeline-date">2014 - 2017</span>
+                                    <h3 class="text-xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                                        Secundaria
+                                    </h3>
+                                    <p class="text-lg">Escuela telesecundaria 1ro de mayo</p>
+                                    <p class="text-dark-500 dark:text-dark-400">Escuela telesecundaria 1ro de mayo</p>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        <!-- Toggle Button -->
+                        <div class="flex justify-center mt-8">
+                            <button id="toggle-education" class="btn-outline">
+                                <span id="toggle-education-text">Ver más</span>
+                                <i class="fas fa-chevron-down ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Cursos y Participaciones -->
+                    <div class="mt-24" data-aos="fade-up" data-aos-duration="1000">
+                        <h3 class="text-2xl font-bold font-heading mb-10 text-center text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                            Participaciones, Cursos, Certificaciones y Constancias
+                        </h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- Item 1 -->
+                            <div class="course-card" data-aos="fade-up" data-aos-delay="100">
+                                <div class="course-header">
+                                    <div class="course-icon">
+                                        <img src="IMG/logos_certificados/cncuu.png" alt="XX Congreso" class="w-12 h-12 rounded-full">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">XX Congreso Internacional de Informática.</h4>
+                                        <p class="text-dark-500 dark:text-dark-400">Mayo 2022</p>
+                                    </div>
+                                </div>
+                                <div class="course-content">
+                                    <p class="mb-4">Participación en el desarrollo de soluciones tecnológicas innovadoras.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="badge">Participante</span>
+                                        <button class="view-certificate-btn" data-certificate="course1">Ver constancia</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Item 2 -->
+                            <div class="course-card" data-aos="fade-up" data-aos-delay="200">
+                                <div class="course-header">
+                                    <div class="course-icon">
+                                        <img src="IMG/logos_certificados/Cisco-logo.png" alt="Curso de IA" class="w-12 h-12 rounded-full">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Certificado de fundamentos de python 1.</h4>
+                                        <p class="text-dark-500 dark:text-dark-400">Mayo 2023</p>
+                                    </div>
+                                </div>
+                                <div class="course-content">
+                                    <p class="mb-4">Curso sobre fundamentos de python.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="badge">Completado</span>
+                                        <button class="view-certificate-btn" data-certificate="course2">Ver certificado</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Item 3 -->
+                            <div class="course-card" data-aos="fade-up" data-aos-delay="300">
+                                <div class="course-header">
+                                    <div class="course-icon">
+                                        <img src="IMG/logos_certificados/cncuu.png" alt="cncuu" class="w-12 h-12 rounded-full">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Cómputo Paralelo</h4>
+                                        <p class="text-dark-500 dark:text-dark-400">Mayo 2023</p>
+                                    </div>
+                                </div>
+                                <div class="course-content">
+                                    <p class="mb-4">Participacion practica en el taller de cómputo paralelo.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="badge">Completado</span>
+                                        <button class="view-certificate-btn" data-certificate="course3">Ver constancia</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Item 4 -->
+                            <div class="course-card" data-aos="fade-up" data-aos-delay="400">
+                                <div class="course-header">
+                                    <div class="course-icon">
+                                        <img src="IMG/logos_certificados/TECNM.png" alt="Certificación Python" class="w-12 h-12 rounded-full">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Diplomado de proyecto ECO-ESTUFA</h4>
+                                        <p class="text-dark-500 dark:text-dark-400">Mayo 2022</p>
+                                    </div>
+                                </div>
+                                <div class="course-content">
+                                    <p class="mb-4">Ganador en la categoria local de innovacion social inclusiva.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="badge">Participante</span>
+                                        <button class="view-certificate-btn" data-certificate="course4">Ver certificado</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Item 5 -->
+                            <div class="course-card" data-aos="fade-up" data-aos-delay="500">
+                                <div class="course-header">
+                                    <div class="course-icon">
+                                        <img src="IMG/logos_certificados/TECNM.png" alt="Taller de Redes" class="w-12 h-12 rounded-full">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Diplomado de proyecto ASERRIN ARDIENTE</h4>
+                                        <p class="text-dark-500 dark:text-dark-400">Marzo 2024</p>
+                                    </div>
+                                </div>
+                                <div class="course-content">
+                                    <p class="mb-4">Participación presentando el proyecto ASERRIN ARDIENTE de la categoria cambio climatico celebrado en Pachuca de Soto, Hidalgo.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="badge">Participante</span>
+                                        <button class="view-certificate-btn" data-certificate="course5">Ver constancia</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Item 6 -->
+                            <div class="course-card" data-aos="fade-up" data-aos-delay="600">
+                                <div class="course-header">
+                                    <div class="course-icon">
+                                        <img src="IMG/logos_certificados/Logo neo.png" alt="Curso de Ciberseguridad" class="w-12 h-12 rounded-full">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">Certificado de Ingles NEOSTUDY</h4>
+                                        <p class="text-dark-500 dark:text-dark-400">Abril 2025</p>
+                                    </div>
+                                </div>
+                                <div class="course-content">
+                                    <p class="mb-4">Curso intensivo de inglés en la plataforma NEOSTUDY, alcanzando el nivel B1.</p>
+                                    <div class="flex justify-between items-center">
+                                        <span class="badge">Completado</span>
+                                        <button class="view-certificate-btn" data-certificate="course6">Ver certificado</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div></div>
+
+
+        <!-- Contact Section -->
+        <section id="contacto" class="py-20 bg-gray-50 dark:bg-dark-900/30 relative overflow-hidden">
+            <!-- Background decoration -->
+            <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-primary-50 dark:bg-primary-900/10 rounded-bl-full -z-10 opacity-70"></div>
+            <div class="absolute bottom-0 left-0 w-1/3 h-1/3 bg-accent-50 dark:bg-accent-900/10 rounded-tr-full -z-10 opacity-70"></div>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <span class="inline-block px-3 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 rounded-full text-sm font-medium mb-4">
+                        Contacto
+                    </span>
+                    <h2 class="text-4xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                        ¡Hablemos!
+                    </h2>
+                </div>
+                
+                <div class="max-w-5xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+                        <!-- Contact Info -->
+                        <div class="lg:col-span-2" data-aos="fade-right" data-aos-duration="1000">
+                            <div class="bg-white dark:bg-dark-800 rounded-2xl shadow-xl p-8">
+                                <h3 class="text-2xl font-bold font-heading mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                                    Información de Contacto
+                                </h3>
+                                
+                                <div class="space-y-6">
+                                    <div class="flex items-start">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold">Ubicación</h4>
+                                            <p class="text-dark-500 dark:text-dark-400">
+                                                <a href="https://www.google.com/maps/place/76493+La+Higuera,+Qro./@20.9985834,-99.7221222,19.25z/data=!4m6!3m5!1s0x85d47aabcc443db5:0x2f1944c8af5c3b6b!8m2!3d21.0005!4d-99.72629!16s%2Fg%2F1vd71p5r?entry=ttu&g_ep=EgoyMDI1MDQzMC4xIKXMDSoASAFQAw%3D%3D" target="_blank" class="hover:underline">
+                                                    La Higuera, Peñamiller, Queretaro
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold">Email</h4>
+                                            <p class="text-dark-500 dark:text-dark-400 break-words">
+                                                <a href="mailto:ivanmtzgudino@gmail.com" class="hover:underline">
+                                                    ivanmtzgudino@gmail.com
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="contact-icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold">Teléfono</h4>
+                                            <p class="text-dark-500 dark:text-dark-400">
+                                                <a href="tel:+527207444187" class="hover:underline">
+                                                    +527207444187
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="contact-icon">
+                                            <i class="fab fa-linkedin"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold">LinkedIn</h4>
+                                            <p class="text-dark-500 dark:text-dark-400">
+                                                <a href="https://www.linkedin.com/in/ivan-martinez-gudi%C3%B1o-404884343/" target="_blank" class="hover:underline">
+                                                    linkedin.com/in/ivan-martinez
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-8">
+                                    <h4 class="font-bold mb-4">Sígueme en redes sociales</h4>
+                                    <div class="flex space-x-4">
+                                        <a href="https://www.linkedin.com/in/ivan-martinez-gudi%C3%B1o-404884343/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a href="https://github.com/IVAN0137" target="_blank" class="social-icon" aria-label="GitHub">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        </a>
+                                        <a href="https://wa.me/527207444187" target="_blank" class="social-icon" aria-label="WhatsApp">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Options -->
+                        <div class="lg:col-span-3" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                            <div class="bg-white dark:bg-dark-800 rounded-2xl shadow-xl p-8">
+                                <h3 class="text-2xl font-bold font-heading mb-6 text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-600 dark:from-primary-400 dark:to-accent-400">
+                                    ¿Listo para colaborar?
+                                </h3>
+                                
+                                <p class="text-dark-600 dark:text-dark-300 mb-8">
+                                    Estoy buscando oportunidades para aplicar mis conocimientos y habilidades en un entorno real. Si tienes un proyecto interesante o una oportunidad de residencia, ¡me encantaría saber más!
+                                </p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <a href="mailto:ivanmtzgudino@gmail.com" class="contact-method-card">
+                                        <div class="contact-method-icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <h4 class="font-bold">Envíame un email</h4>
+                                        <p class="text-dark-500 dark:text-dark-400 text-sm">Respuesta en 24 horas</p>
+                                    </a>
+                                    
+                                    <a href="https://wa.me/527207444187" target="_blank" class="contact-method-card">
+                                        <div class="contact-method-icon">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </div>
+                                        <h4 class="font-bold">WhatsApp</h4>
+                                        <p class="text-dark-500 dark:text-dark-400 text-sm">Disponible 9am-6pm</p>
+                                    </a>
+                                    
+                                    <a href="tel:+527207444187" class="contact-method-card">
+                                        <div class="contact-method-icon">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <h4 class="font-bold">Llámame</h4>
+                                        <p class="text-dark-500 dark:text-dark-400 text-sm">Lun-Vie, 9am-6pm</p>
+                                    </a>
+                                    
+                                    <a href="https://calendly.com/ivanmartinezgudino55" target="_blank" class="contact-method-card">
+                                        <div class="contact-method-icon">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </div>
+                                        <h4 class="font-bold">Agenda una reunión</h4>
+                                        <p class="text-dark-500 dark:text-dark-400 text-sm">Elige un horario conveniente</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold font-heading">
+                        <span class="text-primary-400">Ivan</span>
+                        <span class="text-accent-400">MG</span>
+                    </a>
+                    <p class="mt-2 text-dark-400">Ingeniero en Sistemas Computacionales</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="footer-social-icon" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="footer-social-icon" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="footer-social-icon" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-dark-700 text-center">
+                <p class="text-dark-400">&copy; 2023 Ivan Martinez Gudiño. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 p-3 rounded-full bg-gradient-to-r from-primary-600 to-accent-600 text-white shadow-lg z-30 opacity-0 invisible transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1" aria-label="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Certificate Modal -->
+    <div id="certificate-modal" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+        <div class="bg-white dark:bg-dark-800 rounded-2xl shadow-xl max-w-3xl w-full mx-4 overflow-hidden">
+            <div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-dark-700">
+                <h3 class="text-xl font-bold" id="modal-title">Certificado</h3>
+                <button id="close-modal" class="text-dark-500 hover:text-dark-700 dark:hover:text-dark-300" aria-label="Cerrar">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div id="certificate-content" class="flex justify-center">
+                    <!-- Certificate image will be loaded here -->
+                    <img src="/placeholder.svg" alt="Certificado" id="certificate-image" class="max-w-full h-auto rounded-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AOS Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
+
